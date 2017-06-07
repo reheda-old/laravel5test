@@ -36,7 +36,7 @@ class Post extends Model
     public function scopeUnPublished($query)
     {
         $query
-            ->where('published_at', '=>', Carbon::now())
+            ->where('published_at', '>', Carbon::now())
             ->orWhere('published', '=', 0);
     }
 
