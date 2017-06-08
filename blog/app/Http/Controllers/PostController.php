@@ -43,6 +43,14 @@ class PostController extends Controller
     public function store(Post $postModel, Request $request){
 //        dd($request->all());
 
+
+        $this->validate(request(), [
+            'title'=>'required|min:2',
+            'slug'=>'required',
+            'excerpt'=>'required',
+            'content'=>'required',
+            'published_at'=>'required',
+        ]);
         $postModel->create($request->all());
 
         return redirect()->route('posts');
